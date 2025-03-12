@@ -9,8 +9,17 @@
         Loaded="Window_Loaded">
     <Grid>
         <Image x:Name="imgMovie" HorizontalAlignment="Left" Height="275" Margin="65,103,0,0" VerticalAlignment="Top" Width="189"/>
-        <Image x:Name="ImgLead" HorizontalAlignment="Left" Height="115" Margin="400,79,0,0" VerticalAlignment="Top" Width="161"/>
-        <Image x:Name="imgAnt" HorizontalAlignment="Left" Height="129" Margin="400,253,0,0" VerticalAlignment="Top" Width="171"/>
+        <Image x:Name="ImgLead" HorizontalAlignment="Left" Height="115" Margin="270,103,0,0" VerticalAlignment="Top" Width="161"/>
+        <Image x:Name="imgAnt" HorizontalAlignment="Left" Height="128" Margin="270,294,0,0" VerticalAlignment="Top" Width="171"/>
+        <TextBlock HorizontalAlignment="Left" Margin="65,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="77" FontSize="18"><Run Text="Movie"/><Run Language="en-ie" Text=":"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="270,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="54" FontSize="18"><Run Language="en-ie" Text="Lead:"/></TextBlock>
+        <TextBlock x:Name="tblxLead" HorizontalAlignment="Center" Height="27" Margin="0,79,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="152" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="270,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="70" FontSize="18"><Run Text="Starring"/><Run Language="en-ie" Text=":"/><LineBreak/><Run/><LineBreak/><Run/><Run Text=":"/></TextBlock>
+        <TextBlock x:Name="tblxAnt" HorizontalAlignment="Left" Height="24" Margin="345,270,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="131" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="504,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="85" FontSize="18"><Run Language="en-ie" Text="Released"/><Run Text=":"/></TextBlock>
+        <TextBlock x:Name="tblxReleased" HorizontalAlignment="Left" Margin="594,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="185" FontSize="18"><Run Language="en-ie" Text="Released"/><Run Text=":"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="491,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="98" FontSize="18"><Run Language="en-ie" Text="Directed By"/><Run Text=":"/></TextBlock>
+        <TextBlock x:Name="tblxDirector" HorizontalAlignment="Left" Margin="594,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="196" FontSize="18"><Run Language="en-ie" Text="Released"/><Run Text=":"/></TextBlock>
 
     </Grid>
 </Window>

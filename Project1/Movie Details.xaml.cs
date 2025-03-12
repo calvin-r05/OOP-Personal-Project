@@ -24,10 +24,29 @@ namespace Project1
         public Movie_Details(Movie selectedMovie)
         {
             InitializeComponent();
-            imgMovie.Source = new BitmapImage(new Uri(selectedMovie.Images));
-            var actors = from a in db.Actors
-                         where a.MovieID == selectedMovie.MovieID
-                         select a;
+            if (selectedMovie != null)
+            {
+                imgMovie.Source = new BitmapImage(new Uri(selectedMovie.Images));
+                var actors = from a in db.Actors
+                             where a.MovieID == selectedMovie.MovieID
+                             select a;
+
+                foreach (var actor in actors)
+                {
+                    if (actor.Role == "Protagonist")
+                    {
+                        ImgLead.Source = new BitmapImage(new Uri(actor.Images));
+                        tblxLead.Text = actor.Name;
+                    }
+                    else if (actor.Role == "Antagonist")
+                    {
+                        imgAnt.Source = new BitmapImage(new Uri(actor.Images));
+                        tblxAnt.Text = actor.Name;
+                    }
+                }
+                tblxDirector.Text = selectedMovie.Director;
+                tblxReleased.Text = selectedMovie.YearReleased.ToString();
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

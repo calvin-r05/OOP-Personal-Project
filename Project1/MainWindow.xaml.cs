@@ -105,8 +105,11 @@ namespace Project1
 
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
-            Movie_Details movieDetails = new Movie_Details(lbxMovies.SelectedItem as Movie);
-            movieDetails.Show();
+            if (lbxMovies.SelectedItem != null)
+            {
+                Movie_Details movieDetails = new Movie_Details(lbxMovies.SelectedItem as Movie);
+                movieDetails.Show();
+            }
         }
     }
 }
