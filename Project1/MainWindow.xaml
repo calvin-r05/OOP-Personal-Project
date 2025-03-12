@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Project1"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded"
+         Style="{StaticResource MaterialDesignWindow}">
     <Grid>
         <ListBox x:Name="lbxMovies" HorizontalAlignment="Left" Height="297" Margin="25,65,0,0" VerticalAlignment="Top" Width="155" SelectionChanged="lbxMovies_SelectionChanged"/>
         <ListBox x:Name="lbxActors" HorizontalAlignment="Left" Height="297" Margin="226,65,0,0" VerticalAlignment="Top" Width="155"/>
@@ -16,6 +17,7 @@
         <TextBlock HorizontalAlignment="Left" Height="21" Margin="557,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"><Run Language="en-ie" Text="Favorites"/><LineBreak/><Run Language="en-ie"/></TextBlock>
         <Button x:Name="btnFav" Content="Favorite" HorizontalAlignment="Left" Height="23" Margin="25,388,0,0" VerticalAlignment="Top" Width="88" Click="Button_Click"/>
         <Button x:Name="btnUnfav" Content="Unfavorite" HorizontalAlignment="Left" Height="23" Margin="557,388,0,0" VerticalAlignment="Top" Width="89" Click="btnUnfav_Click"/>
+        <Button x:Name="btnDetails" Content="Show Details" HorizontalAlignment="Left" Height="23" Margin="226,388,0,0" VerticalAlignment="Top" Width="105" Click="btnDetails_Click"/>
 
     </Grid>
 </Window>

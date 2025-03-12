@@ -12,6 +12,7 @@ namespace Project1
         public string Name { get; set; }
         public int MovieID { get; set; }
         public string Role { get; set; }
+        public string Images { get; set; }
         public virtual Movie Movie { get; set; }
 
         public Actor() { }

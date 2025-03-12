@@ -14,7 +14,9 @@ namespace Project1
         public string MovieName {  get; set; }
         public string Director { get; set; }
         public int YearReleased { get; set; }
+        public string Images { get; set; }
         public virtual List<Actor> Actors { get; set; }
+       
 
         public Movie() { }
 

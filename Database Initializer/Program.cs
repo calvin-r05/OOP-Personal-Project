@@ -31,7 +31,7 @@ namespace Database_Initializer
                 Actor a7 = new Actor(5, "Sean Astin", 4, "Protagonist", m4);
                 Actor a8 = new Actor(6, "Anne Ramsey", 4, "Antagonist", m4);
 
-                db.Movies.Add(m1);
+                db.Movies.Add(m1); 
                 db.Movies.Add(m2);
                 db.Movies.Add(m3);
                 db.Movies.Add(m4);

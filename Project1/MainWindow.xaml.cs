@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,15 +58,29 @@ namespace Project1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            bool checker = false;
             if (lbxMovies.SelectedItem != null)
             {
                 Movie selected = lbxMovies.SelectedItem as Movie;
-                Favorite temp = new Favorite(selected);
-                db.Favorites.Add(temp);
-                db.SaveChanges();
-                var query = from f in db.Favorites
-                            select f;
-                lbxFavorites.ItemsSource = query.ToList();
+                var query2 = from f in db.Favorites
+                             select f.Movie.MovieID;
+                foreach( var ID in query2.ToList())
+                {
+                    if (ID == selected.MovieID)
+                    {
+                        checker = true;
+                        break;
+                    }
+                }
+                if (checker == false)
+                {
+                    Favorite temp = new Favorite(selected);
+                    db.Favorites.Add(temp);
+                    db.SaveChanges();
+                    var query = from f in db.Favorites
+                                select f;
+                    lbxFavorites.ItemsSource = query.ToList();
+                }
             }
         }
 
@@ -86,6 +101,12 @@ namespace Project1
                             select f;
                 lbxFavorites.ItemsSource = query.ToList();
             }
+        }
+
+        private void btnDetails_Click(object sender, RoutedEventArgs e)
+        {
+            Movie_Details movieDetails = new Movie_Details(lbxMovies.SelectedItem as Movie);
+            movieDetails.Show();
         }
     }
 }
