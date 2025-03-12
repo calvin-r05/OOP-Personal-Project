@@ -20,9 +20,72 @@ namespace Project1
     /// </summary>
     public partial class MainWindow : Window
     {
+        MovieData db = new MovieData();
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+            var query = from m in db.Movies
+                        select m;
+
+            var query1 = from f in db.Favorites
+                         select f;
+
+            lbxMovies.ItemsSource = query.ToList();
+            lbxMovies.SelectedItem = 0;
+            lbxFavorites.ItemsSource = query1.ToList();
+            lbxFavorites.SelectedItem = 0;
+        }
+
+        private void lbxMovies_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            if (lbxMovies.SelectedItem != null)
+            {
+                Movie selected = lbxMovies.SelectedItem as Movie;
+                var query1 = from a in db.Actors
+                             where a.MovieID == selected.MovieID
+                             select a;
+                lbxActors.ItemsSource = query1.ToList();
+            }
+
+                         
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbxMovies.SelectedItem != null)
+            {
+                Movie selected = lbxMovies.SelectedItem as Movie;
+                Favorite temp = new Favorite(selected);
+                db.Favorites.Add(temp);
+                db.SaveChanges();
+                var query = from f in db.Favorites
+                            select f;
+                lbxFavorites.ItemsSource = query.ToList();
+            }
+        }
+
+        private void btnUnfav_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbxFavorites.SelectedItem != null)
+            {
+                Favorite selected = lbxFavorites.SelectedItem as Favorite;
+                var query1 = from f in db.Favorites
+                             where f.Movie.MovieName == selected.Movie.MovieName
+                             select f;
+                foreach (var favorite in query1.ToList())
+                {
+                    db.Favorites.Remove(favorite);
+                }
+                db.SaveChanges();
+                var query = from f in db.Favorites
+                            select f;
+                lbxFavorites.ItemsSource = query.ToList();
+            }
         }
     }
 }

@@ -80,6 +80,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\202503112326489_InitialCreate.cs" />
+    <Compile Include="Migrations\202503112326489_InitialCreate.Designer.cs">
+      <DependentUpon>202503112326489_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202503120011250_UpdateDatabaseSchema.cs" />
+    <Compile Include="Migrations\202503120011250_UpdateDatabaseSchema.Designer.cs">
+      <DependentUpon>202503120011250_UpdateDatabaseSchema.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -94,6 +103,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\202503112326489_InitialCreate.resx">
+      <DependentUpon>202503112326489_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202503120011250_UpdateDatabaseSchema.resx">
+      <DependentUpon>202503120011250_UpdateDatabaseSchema.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

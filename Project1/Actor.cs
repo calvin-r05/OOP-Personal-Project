@@ -24,7 +24,12 @@ namespace Project1
             Role = role;
             Movie = movie;
         }
-        
+
+        public override string ToString()
+        {
+            return $"{Name} ({Role})";
+        }
+
 
     }
 }

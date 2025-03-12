@@ -25,11 +25,36 @@ namespace Project1
             Director = director;
             YearReleased = yearReleased;
         }
+
+        public override string ToString()
+        {
+            return $"{MovieName} ({YearReleased})";
+        }
+    }
+
+    public class Favorite
+    {
+        int ID = 0;
+        public int FavoriteID { get; set; }
+        public Movie Movie { get; set; }
+
+        public Favorite() { }
+        public Favorite(Movie movie)
+        {
+            ID++;
+            FavoriteID = ID;
+            Movie = movie;
+        }
+        public override string ToString()
+        {
+            return $"{Movie.MovieName}";
+        }
     }
     public class MovieData : DbContext
     {
         public MovieData() : base("MovieData") { }
         public DbSet<Actor> Actors { get; set; }
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<Favorite> Favorites { get; set; }
     }
 }
