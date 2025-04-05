@@ -31,9 +31,11 @@ namespace Project1
         {
             
             var query = from m in db.Movies
+                        orderby m.MovieName
                         select m;
 
             var query1 = from f in db.Favorites
+                         orderby f.Movie.MovieName
                          select f;
 
             lbxMovies.ItemsSource = query.ToList();
@@ -51,6 +53,7 @@ namespace Project1
                              where a.MovieID == selected.MovieID
                              select a;
                 lbxActors.ItemsSource = query1.ToList();
+                lbxFavorites.SelectedItem = null;
             }
 
                          
@@ -78,6 +81,7 @@ namespace Project1
                     db.Favorites.Add(temp);
                     db.SaveChanges();
                     var query = from f in db.Favorites
+                                orderby f.Movie.MovieName
                                 select f;
                     lbxFavorites.ItemsSource = query.ToList();
                 }
@@ -110,6 +114,48 @@ namespace Project1
                 Movie_Details movieDetails = new Movie_Details(lbxMovies.SelectedItem as Movie);
                 movieDetails.Show();
             }
+            else if (lbxFavorites.SelectedItem != null)
+            {
+                Favorite selected = lbxFavorites.SelectedItem as Favorite;
+                var query1 = (from f in db.Favorites
+                             where f.Movie.MovieID == selected.Movie.MovieID
+                             select f.Movie).Single();
+                Movie_Details movieDetails = new Movie_Details(query1 as Movie);
+                movieDetails.Show();
+            }
+        }
+
+        private void lbxFavorites_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lbxFavorites.SelectedItem != null)
+            {
+                Favorite selected = lbxFavorites.SelectedItem as Favorite;
+                var query1 = from a in db.Actors
+                             where a.MovieID == selected.Movie.MovieID
+                             select a;
+
+                var query2 = from m in db.Movies
+                             where m.MovieID == selected.Movie.MovieID
+                             select m; 
+                lbxMovies.SelectedItem = null;
+                lbxActors.ItemsSource = query1.ToList();
+            }
+
+        }
+
+        private void tbxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var searchResults = from m in db.Movies
+                                where m.MovieName.Contains(tbxSearch.Text)
+                                orderby m.MovieName
+                                select m;
+            lbxMovies.ItemsSource = searchResults.ToList();
+        }
+
+        private void tbxSearch_GotFocus(object sender, RoutedEventArgs e)
+        {
+            tbxSearch.Clear();
         }
     }
+    
 }

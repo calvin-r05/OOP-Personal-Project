@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Project1
 {
-    public class Movie
+    public class Movie : IComparable<Movie>
     {
         public int MovieID { get; set; }
         public string MovieName {  get; set; }
@@ -20,17 +20,30 @@ namespace Project1
 
         public Movie() { }
 
-        public Movie(int id, string name, string director, int yearReleased)
+        public Movie(int id, string name, string director, int yearReleased, string images)
         {
             MovieID = id;
             MovieName = name;
             Director = director;
             YearReleased = yearReleased;
+            Images = images;
+        }
+
+        public int CompareTo(Movie otherMovie)
+        {
+            if (otherMovie == null)
+            {
+                return 1;
+            }
+            else
+            {
+                return string.Compare(this.MovieName.ToLower(), otherMovie.MovieName.ToLower());
+            }
         }
 
         public override string ToString()
         {
-            return $"{MovieName} ({YearReleased})";
+            return $"{MovieName}";
         }
     }
 

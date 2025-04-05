@@ -35,7 +35,7 @@ namespace Project1
                 {
                     if (actor.Role == "Protagonist")
                     {
-                        ImgLead.Source = new BitmapImage(new Uri(actor.Images));
+                        imgLead.Source = new BitmapImage(new Uri(actor.Images));
                         tblxLead.Text = actor.Name;
                     }
                     else if (actor.Role == "Antagonist")
@@ -46,6 +46,7 @@ namespace Project1
                 }
                 tblxDirector.Text = selectedMovie.Director;
                 tblxReleased.Text = selectedMovie.YearReleased.ToString();
+                tblxMovie.Text = selectedMovie.MovieName;
             }
         }
 

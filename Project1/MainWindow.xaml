@@ -7,17 +7,64 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         Loaded="Window_Loaded"
+        Background="DimGray"
          Style="{StaticResource MaterialDesignWindow}">
     <Grid>
-        <ListBox x:Name="lbxMovies" HorizontalAlignment="Left" Height="297" Margin="25,65,0,0" VerticalAlignment="Top" Width="155" SelectionChanged="lbxMovies_SelectionChanged"/>
-        <ListBox x:Name="lbxActors" HorizontalAlignment="Left" Height="297" Margin="226,65,0,0" VerticalAlignment="Top" Width="155"/>
-        <ListBox x:Name="lbxFavorites" HorizontalAlignment="Left" Height="297" Margin="557,65,0,0" VerticalAlignment="Top" Width="155"/>
-        <TextBlock HorizontalAlignment="Left" Height="21" Margin="31,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"><Run Language="en-ie" Text="Movies"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Height="21" Margin="226,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"><Run Language="en-ie" Text="Actors"/><LineBreak/><Run Language="en-ie"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Height="21" Margin="557,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82"><Run Language="en-ie" Text="Favorites"/><LineBreak/><Run Language="en-ie"/></TextBlock>
-        <Button x:Name="btnFav" Content="Favorite" HorizontalAlignment="Left" Height="23" Margin="25,388,0,0" VerticalAlignment="Top" Width="88" Click="Button_Click"/>
-        <Button x:Name="btnUnfav" Content="Unfavorite" HorizontalAlignment="Left" Height="23" Margin="557,388,0,0" VerticalAlignment="Top" Width="106" Click="btnUnfav_Click"/>
-        <Button x:Name="btnDetails" Content="Show Details" HorizontalAlignment="Left" Height="23" Margin="226,388,0,0" VerticalAlignment="Top" Width="126" Click="btnDetails_Click"/>
+        <Grid.RowDefinitions>
+            
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.1*">
+            </RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
+        
+
+        <TextBlock Text="Movies" FontSize="22" Grid.Row="1" Grid.Column="0" />
+        <ListBox x:Name="lbxMovies" Grid.Row="2" Grid.Column="0" SelectionChanged="lbxMovies_SelectionChanged"/>
+
+        
+        <Grid Grid.Row="3" Grid.Column="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.2*"/>
+        </Grid.ColumnDefinitions>
+            <Button x:Name="btnFav" Content="Favorite"  Grid.Column="1"  Click="Button_Click"/>
+        </Grid>
+
+        <TextBlock Text="Actors" FontSize="22" Grid.Row="1" Grid.Column="1" />
+        <ListBox x:Name="lbxActors" Grid.Row="2" Grid.Column="1" />
+
+
+        <Grid Grid.Row="3" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.2*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnDetails" Content="Show Details"  Grid.Column="1" Click="btnDetails_Click"/>
+        </Grid>
+
+        <TextBlock Text="Favorites" FontSize="22" Grid.Row="1" Grid.Column="2" />
+        <ListBox x:Name="lbxFavorites" Grid.Row="2" Grid.Column="2" SelectionChanged="lbxFavorites_SelectionChanged"/>
+
+
+        <Grid Grid.Row="3" Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.2*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnUnfav" Content="Unfavorite"  Grid.Column="1" Click="btnUnfav_Click"/>
+        </Grid>
+
+        <TextBox x:Name="tbxSearch" FontSize="20" Text="Search" Grid.Row="0" Grid.Column="0" GotFocus= "tbxSearch_GotFocus" TextChanged="tbxSearch_TextChanged"/>
     </Grid>
 </Window>

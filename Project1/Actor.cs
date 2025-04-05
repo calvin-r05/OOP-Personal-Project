@@ -17,13 +17,14 @@ namespace Project1
 
         public Actor() { }
 
-        public Actor(int id,  string name, int movieID, string role, Movie movie)
+        public Actor(int id,  string name, int movieID, string role, Movie movie, string images)
         {
             ActorID = id;
             Name = name;
             MovieID = movieID;
             Role = role;
             Movie = movie;
+            Images = images;
         }
 
         public override string ToString()
