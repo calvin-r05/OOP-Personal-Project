@@ -15,9 +15,6 @@ using Project1;
 
 namespace Project1
 {
-    /// <summary>
-    /// Interaction logic for Movie_Details.xaml
-    /// </summary>
     public partial class Movie_Details: Window
     {
         MovieData db = new MovieData();

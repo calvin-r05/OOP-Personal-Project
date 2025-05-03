@@ -30,17 +30,17 @@ namespace Project1
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             
-            var query = from m in db.Movies
+            var movies = from m in db.Movies
                         orderby m.MovieName
                         select m;
 
-            var query1 = from f in db.Favorites
+            var favorites = from f in db.Favorites
                          orderby f.Movie.MovieName
                          select f;
 
-            lbxMovies.ItemsSource = query.ToList();
+            lbxMovies.ItemsSource = movies.ToList();
             lbxMovies.SelectedItem = 0;
-            lbxFavorites.ItemsSource = query1.ToList();
+            lbxFavorites.ItemsSource = favorites.ToList();
             lbxFavorites.SelectedItem = 0;
         }
 
@@ -49,25 +49,25 @@ namespace Project1
             if (lbxMovies.SelectedItem != null)
             {
                 Movie selected = lbxMovies.SelectedItem as Movie;
-                var query1 = from a in db.Actors
+                var actors = from a in db.Actors
                              where a.MovieID == selected.MovieID
                              select a;
-                lbxActors.ItemsSource = query1.ToList();
+                lbxActors.ItemsSource = actors.ToList();
                 lbxFavorites.SelectedItem = null;
             }
 
                          
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnFav_Click(object sender, RoutedEventArgs e)
         {
             bool checker = false;
             if (lbxMovies.SelectedItem != null)
             {
                 Movie selected = lbxMovies.SelectedItem as Movie;
-                var query2 = from f in db.Favorites
+                var favorites = from f in db.Favorites
                              select f.Movie.MovieID;
-                foreach( var ID in query2.ToList())
+                foreach( var ID in favorites.ToList())
                 {
                     if (ID == selected.MovieID)
                     {
@@ -77,13 +77,13 @@ namespace Project1
                 }
                 if (checker == false)
                 {
-                    Favorite temp = new Favorite(selected);
-                    db.Favorites.Add(temp);
+                    Favorite newFav = new Favorite(selected);
+                    db.Favorites.Add(newFav);
                     db.SaveChanges();
-                    var query = from f in db.Favorites
+                    var updatedFavorites = from f in db.Favorites
                                 orderby f.Movie.MovieName
                                 select f;
-                    lbxFavorites.ItemsSource = query.ToList();
+                    lbxFavorites.ItemsSource = updatedFavorites.ToList();
                 }
             }
         }
@@ -93,17 +93,17 @@ namespace Project1
             if (lbxFavorites.SelectedItem != null)
             {
                 Favorite selected = lbxFavorites.SelectedItem as Favorite;
-                var query1 = from f in db.Favorites
+                var chosenFav = from f in db.Favorites
                              where f.Movie.MovieName == selected.Movie.MovieName
                              select f;
-                foreach (var favorite in query1.ToList())
+                foreach (var favorite in chosenFav.ToList())
                 {
                     db.Favorites.Remove(favorite);
                 }
                 db.SaveChanges();
-                var query = from f in db.Favorites
+                var updatedFavorites = from f in db.Favorites
                             select f;
-                lbxFavorites.ItemsSource = query.ToList();
+                lbxFavorites.ItemsSource = updatedFavorites.ToList();
             }
         }
 
@@ -117,10 +117,10 @@ namespace Project1
             else if (lbxFavorites.SelectedItem != null)
             {
                 Favorite selected = lbxFavorites.SelectedItem as Favorite;
-                var query1 = (from f in db.Favorites
+                var chosenFavorite = (from f in db.Favorites
                              where f.Movie.MovieID == selected.Movie.MovieID
                              select f.Movie).Single();
-                Movie_Details movieDetails = new Movie_Details(query1 as Movie);
+                Movie_Details movieDetails = new Movie_Details(chosenFavorite as Movie);
                 movieDetails.Show();
             }
         }
@@ -130,15 +130,11 @@ namespace Project1
             if (lbxFavorites.SelectedItem != null)
             {
                 Favorite selected = lbxFavorites.SelectedItem as Favorite;
-                var query1 = from a in db.Actors
+                var actorsInMovie = from a in db.Actors
                              where a.MovieID == selected.Movie.MovieID
                              select a;
-
-                var query2 = from m in db.Movies
-                             where m.MovieID == selected.Movie.MovieID
-                             select m; 
                 lbxMovies.SelectedItem = null;
-                lbxActors.ItemsSource = query1.ToList();
+                lbxActors.ItemsSource = actorsInMovie.ToList();
             }
 
         }
