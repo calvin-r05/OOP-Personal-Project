@@ -35,7 +35,7 @@ namespace Database_Initializer
                 Actor a9 = new Actor(9, "Marlon Brando", 5, "Protagonist", m5, "https://th.bing.com/th/id/OIP.3Mbe7YEL52Sjmwl2WOnClgHaJa?w=156&h=180&c=7&r=0&o=5&pid=1.7");
                 Actor a10 = new Actor(10, "Richard Conte", 5, "Antagonist", m5, "https://th.bing.com/th/id/OSK.5PdH-VJ6OWnX4EoA5VIPCfO1R8WDwKG7y0M6MEqlFuE?w=224&h=200&c=12&rs=1&o=6&pid=SANGAM");
 
-                Movie m6 = new Movie(6, "The Hunger Games", "Gary Ross", 2012, "https://th.bing.com/th/id/OIP._Sr2M9I5mRO2k1BWNz74VAHaJ4?rs=1&pid=ImgDetMain");
+                Movie m6 = new Movie(6, "The Hunger Games", "Gary Ross", 2012, "https://th.bing.com/th/id/R.ffff89e409f600156ea39c6162200e9c?rik=%2bEoQObCKBehlkw&pid=ImgRaw&r=0");
                 Actor a11 = new Actor(11, "Jennifer Lawrence", 11, "Protagonist", m6, "https://th.bing.com/th/id/OIP.8ekOM2MZia28Z7P4ic_8RQHaNK?w=186&h=331&c=7&r=0&o=5&pid=1.7");
                 Actor a12 = new Actor(12, "Donald Sutherland", 6, "Antagonist", m6, "https://th.bing.com/th/id/OIP.mOFrX7NuUdj4wmQjxxTjLwHaKB?w=186&h=252&c=7&r=0&o=5&pid=1.7");
 
