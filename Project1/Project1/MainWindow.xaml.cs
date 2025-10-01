@@ -106,7 +106,7 @@ namespace Project1
                 lbxFavorites.ItemsSource = updatedFavorites.ToList();
             }
         }
-         
+
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
             if (lbxMovies.SelectedItem != null)
